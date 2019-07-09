@@ -450,4 +450,18 @@ final class MoneyTest extends TestCase
             [1007, 10, '7'],
         ];
     }
+
+    /**
+     * @test
+     */
+    public function it_deserializes_from_vardump()
+    {
+        $this->assertEquals(
+            new Money(12345, new Currency('TEST')),
+            Money::__set_state([
+                'amount' => '12345',
+                'currency' => new Currency('TEST'),
+            ])
+        );
+    }
 }

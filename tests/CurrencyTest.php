@@ -14,4 +14,17 @@ final class CurrencyTest extends TestCase
     {
         $this->assertEquals('"USD"', json_encode(new Currency('USD')));
     }
+
+    /**
+     * @test
+     */
+    public function it_deserializes_from_vardump()
+    {
+        $this->assertEquals(
+            new Currency('TEST'),
+            Currency::__set_state([
+                'code' => 'TEST',
+            ])
+        );
+    }
 }

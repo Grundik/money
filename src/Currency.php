@@ -85,4 +85,14 @@ final class Currency implements \JsonSerializable
     {
         return $this->code;
     }
+
+    /**
+     * Deserialization from var_dump()
+     * @param array $state
+     * @return Currency
+     */
+    public static function __set_state($state)
+    {
+        return new self($state['code']);
+    }
 }
